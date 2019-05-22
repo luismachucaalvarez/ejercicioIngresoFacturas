@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="assets/css/bulma.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="box">
+                        <h1 class="title has-text-centered">Formulario ingreso facturas</h1>
+                        <form action="#" id="formularioFactura">
+                            <div class="field">
+                                <label class="label">Número Factura</label>
+                                <div class="control">
+                                    <input id="numero-factura" class="input" type="text" placeholder="Ingrese número de factura">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Valor Neto</label>
+                                <div class="control">
+                                    <input id="valor-neto" class="input" type="text" placeholder="Ingrese valor neto de factura">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">IVA (19%)</label>
+                                <div class="control">
+                                    <input id="iva" class="input" type="text" placeholder="Valor IVA, se calcula automáticamente" disabled>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Valor Total</label>
+                                <div class="control">
+                                    <input id="valor-total" class="input" type="text" placeholder="Valor total de factura, calculado automáticamente" disabled>
+                                </div>
+                            </div>
+                            <div class="buttons is-centered">
+                                <span id="calcular" class="button is-success">Calcular</span>
+                                <span class="button is-info">Ingresar factura</span>
+                                <span class="button is-danger">Reiniciar</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2 class="title has-text-centered">Listado facturas ingresadas</h2>
+                    <div id="listado-facturas">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Número Factura</th>
+                                    <th>valor Neto</th>
+                                    <th>IVA</th>
+                                    <th>Total</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <td>1000</td>
+                                    <td>190</td>
+                                    <td>1190</td>
+                                    <td>
+                                        <a class="delete is-medium"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <td>10000</td>
+                                    <td>1900</td>
+                                    <td>11900</td>
+                                    <td>
+                                        <a class="delete is-medium"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <td>3000</td>
+                                    <td>570</td>
+                                    <td>3570</td>
+                                    <td>
+                                        <a class="delete is-medium"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script src="assets/js/propio.js"></script>
+</body>
+
+</html>
