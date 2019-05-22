@@ -1,16 +1,31 @@
 //Definir variables
 const numeroFactura = document.getElementById('valor-factura');
-const valorNeto = document.getElementById('valor-neto');
-const iva = document.getElementById('iva');
-const valorTotal = document.getElementById('valor-total');
+const calcular = document.getElementById('calcular');
+const ingresarFactura = document.getElementById('ingresar-factura');
+const reiniciar = document.getElementById('reiniciar');
+
+
+// const valorTotal = document.getElementById('valor-total');
 
 
 //Definir event listeners
+calcular.addEventListener('click', calcularFactura);
+ingresarFactura.addEventListener('click', ingresarDatosFactura);
+reiniciar.addEventListener('click', reiniciarFormulario);
 
-const calcular = document.getElementById('calcular');
+function calcularFactura() {
+    const valorNeto = document.getElementById('valor-neto').value;  
+    let resultadoIva = parseInt(valorNeto) * 0.19;
+    let resultadoTotal = parseInt(valorNeto) + parseInt(resultadoIva);
+    document.getElementById('iva').value = parseInt(resultadoIva);
+    document.getElementById('valor-total').value = resultadoTotal;
+    
+}
 
-calcular.addEventListener('click', pruebaFactura);
+function ingresarDatosFactura(){
+    console.log('Ingreso de datos funciona');
+}
 
-function pruebaFactura() {
-    console.log('Funciona');
+function reiniciarFormulario(){
+    console.log('Reinicio del formulario funciona');
 }
