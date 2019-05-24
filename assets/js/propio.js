@@ -27,34 +27,46 @@ function calcularFactura() {
 }
 
 function ingresarDatosFactura(){
-    // alert('Ingreso de datos funciona');
     const valorNeto = document.getElementById('valor-neto').value;
     const resultadoIva = document.getElementById('iva').value;
     const resultadoTotal = document.getElementById('valor-total').value;
+
+    //Crear boton borrar elemento
+    const tdBorrar=document.createElement('td');
     botonBorrar = document.createElement('a');
     botonBorrar.classList.add('delete','is-medium');
-    // const trNumeroFactura = document.createElement('tr');
-    // const th = document.createElement('th');
-    // const td = document.createElement('td');
-    // // const numero = document.createTextNode('Prueba 1');
-    // th.innerText = numeroFactura;
-    
-    // const neto = document.createTextNode('Prueba 2');
-    // const ivaT = document.createTextNode('Prueba 3');
-    // th.appendChild(numero);
-    // td.appendChild(neto);
-    // td.appendChild(ivaT);
-    // tr.appendChild(th);
-    // tr.appendChild(td);
+    tdBorrar.appendChild(botonBorrar);
 
-    // tr.innerHTML = numeroFactura + '</td><td>' + valorNeto + '</td><td>' + resultadoIva + '</td><td>' + resultadoTotal + '</td>';
-    tr.appendChild(botonBorrar);
-    listadoFacturas.appendChild(tr);
-    // const li = document.createElement('li');
-    // li.innerText = "Prueba";
-    // li.appendChild(botonBorrar);
-    // listadoFacturas.appendChild(li);
+    //Crear tr para cada factura
+    const trFactura=document.createElement('tr');
 
+    //Crear celda Numero Factura
+    const thNumeroFactura = document.createElement('th');
+    const Numero = document.createTextNode('Nro Factura');
+    thNumeroFactura.append(Numero);
+
+    //Se crea celda con información de valor neto por cada factura
+    const tdValorNeto = document.createElement('td');
+    const Numero2 = document.createTextNode('Valor Neto');
+    tdValorNeto.append(Numero2);
+
+    //Se crea celda con información de IVA por cada factura
+    const tdIva = document.createElement('td');
+    const Numero3 = document.createTextNode('IVA');
+    tdIva.append(Numero3);
+
+    //Se crea celda con información del total por cada factura
+    const tdValorTotal = document.createElement('td');
+    const Numero4 = document.createTextNode('Total');
+    tdValorTotal.append(Numero4);
+
+    //Se formatea la información de cada factura para mostrarlo en la tabla
+    listadoFacturas.appendChild(trFactura);
+    trFactura.appendChild(thNumeroFactura);
+    trFactura.appendChild(tdValorNeto);
+    trFactura.appendChild(tdIva);
+    trFactura.appendChild(tdValorTotal);
+    trFactura.appendChild(tdBorrar);
 }
 
 function reiniciarFormulario(){
