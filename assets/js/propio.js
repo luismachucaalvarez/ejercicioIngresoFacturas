@@ -160,33 +160,38 @@ function obtenerTotalCadaFacturaDesdeLocalStorage() {
 }
 
 function cargarTablaFacturas() {
-    //     // const valorNeto = document.getElementById('valor-neto').value;
-    //     // const resultadoIva = document.getElementById('iva').value;
-    //     // const resultadoTotal = document.getElementById('valor-total').value;
-    //     alert('Tabla cargada');
     let numerosFacturas;
     let netoFacturas;
     let ivaFacturas;
     let totalesFacturas;
     numerosFacturas = obtenerNumerosFacturasDesdeLocalStorage();
-    netoFacturas = obtenerNetosCadaFacturaDesdeLocalStorage();
-    ivaFacturas = obtenerIVACadaFacturaDesdeLocalStorage();
-    totalesFacturas = obtenerTotalCadaFacturaDesdeLocalStorage();
-    // numerosFacturas.forEach(function(numeroFactura, valorNetoFactura, resultadoIvaFactura, resultadoTotalFactura) {
 
-    //     //Crear boton borrar elemento
-    //     const tdBorrar = document.createElement('td');
-    //     botonBorrar = document.createElement('a');
-    //     botonBorrar.classList.add('delete', 'is-medium');
-    //     tdBorrar.appendChild(botonBorrar);
+    for (x = 0; x < numerosFacturas.length; x++){
+        console.log(numerosFacturas[x]);
+    }
+    // netoFacturas = obtenerNetosCadaFacturaDesdeLocalStorage();
+    // ivaFacturas = obtenerIVACadaFacturaDesdeLocalStorage();
+    // totalesFacturas = obtenerTotalCadaFacturaDesdeLocalStorage();
 
-    //     //Crear tr para cada factura
-    //     const trFactura = document.createElement('tr');
+    
+    // numerosFacturas.forEach(function(numeroFactura) {
 
-    //     //Crear celda Numero Factura
-    //     const thNumeroFactura = document.createElement('th');
-    //     numeroFactura = document.getElementById('numero-factura').value;
-    //     thNumeroFactura.append(numeroFactura);
+        
+        
+
+        //Crear boton borrar elemento
+        // const tdBorrar = document.createElement('td');
+        // botonBorrar = document.createElement('a');
+        // botonBorrar.classList.add('delete', 'is-medium');
+        // tdBorrar.appendChild(botonBorrar);
+
+        // //Crear tr para cada factura
+        // const trFactura = document.createElement('tr');
+
+        //Crear celda Numero Factura
+        // const thNumeroFactura = document.createElement('th');
+        // numeroFactura = numerosFacturas;
+        // thNumeroFactura.append(numeroFactura);
 
     //     //Se crea celda con información de valor neto por cada factura
     //     const tdValorNeto = document.createElement('td');
@@ -203,12 +208,13 @@ function cargarTablaFacturas() {
     //     resultadoTotalFactura = resultadoTotal;
     //     tdValorTotal.append(resultadoTotalFactura);
 
-    //     //Se formatea la información de cada factura para mostrarlo en la tabla
-    //     listadoFacturas.appendChild(trFactura);
-    //     trFactura.appendChild(thNumeroFactura);
-    //     trFactura.appendChild(tdValorNeto);
-    //     trFactura.appendChild(tdIva);
-    //     trFactura.appendChild(tdValorTotal);
-    //     trFactura.appendChild(tdBorrar);
+    // //     //Se formatea la información de cada factura para mostrarlo en la tabla
+    // listadoFacturas.appendChild(trFactura);
+    // // trFactura.appendChild(thNumeroFactura);
+    // //     trFactura.appendChild(tdValorNeto);
+    // //     trFactura.appendChild(tdIva);
+    // //     trFactura.appendChild(tdValorTotal);
+    // trFactura.appendChild(tdBorrar);
 
-};
+    // });
+}
