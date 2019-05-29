@@ -17,7 +17,7 @@ function eventListeners() {
 }
 
 //Se va a calcular el IVA y el total de la factura a partir del valor neto, y lo mostrará
-//en los casilleros correspondientes antes de ingresarlos al Record
+//en los casilleros correspondientes antes de ingresarlos al Local Storage
 function calcularFactura() {
     const valorNeto = document.getElementById('valor-neto').value;
     let resultadoIva = parseInt(valorNeto) * 0.19;
@@ -75,12 +75,14 @@ function ingresarDatosFactura() {
     guardarDatosFacturaLocalStorage(numeroFactura, valorNetoFactura, resultadoIvaFactura, resultadoTotalFactura);
 }
 
-//FUnción borrará cada factura al hacer clic en el botón borrar
+//Función borrará cada factura al hacer clic en el botón borrar
 
 function borrarDatosFactura(e) {
     e.preventDefault();
     if (e.target.className === 'delete is-medium') {
         e.target.parentElement.parentElement.remove();
+        borrarFacturaDesdeLocalStorage();
+        console.log(e.target.parentElement.parentElement.innerText);
     }
 }
 
@@ -89,7 +91,7 @@ function reiniciarFormulario() {
 }
 
 
-
+//Esta función guarda los datos en el local storage, así se podrá consultar los datos cada vez que se necesite
 
 function guardarDatosFacturaLocalStorage(numeroFactura, valorNetoFactura, resultadoIvaFactura, resultadoTotalFactura) {
     let numerosFacturas;
@@ -159,62 +161,67 @@ function obtenerTotalCadaFacturaDesdeLocalStorage() {
     return TotalesFacturas;
 }
 
+//Esta función carga la tabla con todas las facturas ingresadas, aunque se cierre el navegador
 function cargarTablaFacturas() {
     let numerosFacturas;
     let netoFacturas;
     let ivaFacturas;
     let totalesFacturas;
     numerosFacturas = obtenerNumerosFacturasDesdeLocalStorage();
+    netoFacturas = obtenerNetosCadaFacturaDesdeLocalStorage();
+    ivaFacturas = obtenerIVACadaFacturaDesdeLocalStorage();
+    totalesFacturas = obtenerTotalCadaFacturaDesdeLocalStorage();
 
+    //El ciclo for permite extraer los datos de cada factura ingresada
     for (x = 0; x < numerosFacturas.length; x++){
-        console.log(numerosFacturas[x]);
-    }
-    // netoFacturas = obtenerNetosCadaFacturaDesdeLocalStorage();
-    // ivaFacturas = obtenerIVACadaFacturaDesdeLocalStorage();
-    // totalesFacturas = obtenerTotalCadaFacturaDesdeLocalStorage();
-
-    
-    // numerosFacturas.forEach(function(numeroFactura) {
-
-        
-        
 
         //Crear boton borrar elemento
-        // const tdBorrar = document.createElement('td');
-        // botonBorrar = document.createElement('a');
-        // botonBorrar.classList.add('delete', 'is-medium');
-        // tdBorrar.appendChild(botonBorrar);
+        const tdBorrar = document.createElement('td');
+        botonBorrar = document.createElement('a');
+        botonBorrar.classList.add('delete', 'is-medium');
+        tdBorrar.appendChild(botonBorrar);
 
-        // //Crear tr para cada factura
-        // const trFactura = document.createElement('tr');
+        //Crear tr para cada factura
+        const trFactura = document.createElement('tr');
+        console.log(numerosFacturas[x]);
+        console.log(netoFacturas[x]);
+        console.log(ivaFacturas[x]);
+        console.log(totalesFacturas[x]);
 
-        //Crear celda Numero Factura
-        // const thNumeroFactura = document.createElement('th');
-        // numeroFactura = numerosFacturas;
-        // thNumeroFactura.append(numeroFactura);
+        // Crear celda Numero Factura
+        const thNumeroFactura = document.createElement('th');
+        const numeroFactura = numerosFacturas[x];
+        thNumeroFactura.append(numeroFactura);
 
-    //     //Se crea celda con información de valor neto por cada factura
-    //     const tdValorNeto = document.createElement('td');
-    //     valorNetoFactura = valorNeto;
-    //     tdValorNeto.append(valorNetoFactura);
+        //Se crea celda con información de valor neto por cada factura
+        const tdValorNeto = document.createElement('td');
+        const valorNetoFactura = netoFacturas[x];
+        tdValorNeto.append(valorNetoFactura);
 
-    //     //Se crea celda con información de IVA por cada factura
-    //     const tdIva = document.createElement('td');
-    //     resultadoIvaFactura = resultadoIva;
-    //     tdIva.append(resultadoIvaFactura);
+        //Se crea celda con información de IVA por cada factura
+        const tdIva = document.createElement('td');
+        const resultadoIvaFactura = ivaFacturas[x];
+        tdIva.append(resultadoIvaFactura);
 
-    //     //Se crea celda con información del total por cada factura
-    //     const tdValorTotal = document.createElement('td');
-    //     resultadoTotalFactura = resultadoTotal;
-    //     tdValorTotal.append(resultadoTotalFactura);
+        //Se crea celda con información del total por cada factura
+        const tdValorTotal = document.createElement('td');
+        resultadoTotalFactura = totalesFacturas[x];
+        tdValorTotal.append(resultadoTotalFactura);
 
-    // //     //Se formatea la información de cada factura para mostrarlo en la tabla
-    // listadoFacturas.appendChild(trFactura);
-    // // trFactura.appendChild(thNumeroFactura);
-    // //     trFactura.appendChild(tdValorNeto);
-    // //     trFactura.appendChild(tdIva);
-    // //     trFactura.appendChild(tdValorTotal);
-    // trFactura.appendChild(tdBorrar);
+        //Se formatea la información de cada factura para mostrarlo en la tabla
+        listadoFacturas.appendChild(trFactura);
+        trFactura.appendChild(thNumeroFactura);
+        trFactura.appendChild(tdValorNeto);
+        trFactura.appendChild(tdIva);
+        trFactura.appendChild(tdValorTotal);
+        trFactura.appendChild(tdBorrar);
+    }
+}
 
-    // });
+//Esta función borra los datos de una factura desde local storage
+function borrarFacturaDesdeLocalStorage(trFactura){
+    let numerosFacturas, facturaPorBorrar;
+    // facturaPorBorrar = trFactura.removeClass('delete is-medium');
+    console.log(trFactura);
+
 }
