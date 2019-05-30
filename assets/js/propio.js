@@ -81,8 +81,8 @@ function borrarDatosFactura(e) {
     e.preventDefault();
     if (e.target.className === 'delete is-medium') {
         e.target.parentElement.parentElement.remove();
-        borrarFacturaDesdeLocalStorage();
-        console.log(e.target.parentElement.parentElement.innerText);
+        borrarFacturaDesdeLocalStorage(e.target.parentElement.parentElement.innerText);
+        // console.log(e.target.parentElement.parentElement.innerText);
     }
 }
 
@@ -121,7 +121,7 @@ function guardarDatosFacturaLocalStorage(numeroFactura, valorNetoFactura, result
 function obtenerNumerosFacturasDesdeLocalStorage() {
     let numerosFacturas;
     if (localStorage.getItem('Numero Factura') === null) {
-        numerosFacturas = []
+        numerosFacturas = [];
     } else {
         numerosFacturas = JSON.parse(localStorage.getItem('Numero Factura'));
     }
@@ -132,7 +132,7 @@ function obtenerNumerosFacturasDesdeLocalStorage() {
 function obtenerNetosCadaFacturaDesdeLocalStorage() {
     let netoFacturas;
     if (localStorage.getItem('Valor Neto') === null) {
-        netoFacturas = []
+        netoFacturas = [];
     } else {
         netoFacturas = JSON.parse(localStorage.getItem('Valor Neto'));
     }
@@ -143,7 +143,7 @@ function obtenerNetosCadaFacturaDesdeLocalStorage() {
 function obtenerIVACadaFacturaDesdeLocalStorage() {
     let ivaFacturas;
     if (localStorage.getItem('IVA Factura') === null) {
-        ivaFacturas = []
+        ivaFacturas = [];
     } else {
         ivaFacturas = JSON.parse(localStorage.getItem('IVA Factura'));
     }
@@ -154,7 +154,7 @@ function obtenerIVACadaFacturaDesdeLocalStorage() {
 function obtenerTotalCadaFacturaDesdeLocalStorage() {
     let TotalesFacturas;
     if (localStorage.getItem('Total Factura') === null) {
-        TotalesFacturas = []
+        TotalesFacturas = [];
     } else {
         TotalesFacturas = JSON.parse(localStorage.getItem('Total Factura'));
     }
@@ -183,10 +183,6 @@ function cargarTablaFacturas() {
 
         //Crear tr para cada factura
         const trFactura = document.createElement('tr');
-        console.log(numerosFacturas[x]);
-        console.log(netoFacturas[x]);
-        console.log(ivaFacturas[x]);
-        console.log(totalesFacturas[x]);
 
         // Crear celda Numero Factura
         const thNumeroFactura = document.createElement('th');
@@ -220,8 +216,45 @@ function cargarTablaFacturas() {
 
 //Esta función borra los datos de una factura desde local storage
 function borrarFacturaDesdeLocalStorage(trFactura){
-    let numerosFacturas, facturaPorBorrar;
-    // facturaPorBorrar = trFactura.removeClass('delete is-medium');
-    console.log(trFactura);
+    let numerosFacturas, numFacturaPorBorrar, numPrueba;
+    numFacturaPorBorrar = obtenerNumerosFacturasDesdeLocalStorage();
+    valorNetoPorBorrar = obtenerNetosCadaFacturaDesdeLocalStorage();
+    ivaPorBorrar = obtenerIVACadaFacturaDesdeLocalStorage();
+    valorTotalPorBorrar = obtenerTotalCadaFacturaDesdeLocalStorage();
 
+    // console.log(trFactura);
+
+    numFacturaPorBorrar.forEach(function(e, index){
+        console.log(trFactura);
+    });
+    // console.log(numFacturaPorBorrar[1]);
+    // console.log(numFacturaPorBorrar[1]);
+    // console.log(valorNetoPorBorrar[1]);
+    // console.log(ivaPorBorrar[1]);
+    // console.log(valorTotalPorBorrar[1]);
+    // for (x = 0; x < numFacturaPorBorrar[x].length; x++){
+    //     if (numFacturaPorBorrar[x] === 2){
+    //         console.log(valorNetoPorBorrar[x]);
+    //     }
+    //     // numPrueba = numFacturaPorBorrar[x];
+    //     // console.log(numPrueba);
+    //     // if (numFacturaPorBorrar[2] === 2){
+    //     //     // console.log(numFacturaPorBorrar[x]);
+    //     //     numPrueba = numFacturaPorBorrar[x];
+    //     //     console.log(numPrueba);
+    //     // }
+    //     // else{
+    //     //     console.log('No funciona');
+    //     // }
+    // }
+    // numFacturaPorBorrar.forEach(function(trFactura, index){
+    //     if(numFacturaPorBorrar===trFactura){
+    //          console.log('Funciona');
+    //      }
+    //  });
+    // for (x=0; x<)
+    // facturaPorBorrar = trFactura.removeClass('delete is-medium');
+    // console.log(trFactura);
+    // console.log(numerosFacturas);
+    // localStorage.setItem('Numero Factura', JSON.stringify(numerosFacturas));
 }
